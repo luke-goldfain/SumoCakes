@@ -140,7 +140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e5a35ea510c2a442b5bd05475c21ae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isScrolling: 0
+  hasParallax: 1
   backgroundSize: 23.74
+  parallaxSpeed: -3
 --- !u!4 &494625316
 Transform:
   m_ObjectHideFlags: 0
@@ -730,7 +733,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e5a35ea510c2a442b5bd05475c21ae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isScrolling: 0
+  hasParallax: 0
   backgroundSize: 23.74
+  parallaxSpeed: 0
 --- !u!1 &1675934117
 GameObject:
   m_ObjectHideFlags: 0
