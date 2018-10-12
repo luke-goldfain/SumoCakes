@@ -101,12 +101,12 @@ public class AttackInput : MonoBehaviour {
                 case state.acting:
                     playerState = state.waiting;
                     Debug.Log("state is now waiting for 60 frames");
-                    timer.maxTime = 60;
+                    timer.maxTime = 300;
                     break;
                 case state.waiting:
                     playerState = state.acting;
                     Debug.Log("state is now acting for 300 frames");
-                    timer.maxTime = 300;
+                    timer.maxTime = 60;
                     break;
             }
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Timer : MonoBehaviour {
-    
+    [SerializeField]
     public int maxTime;
     private int currentTime;
 
