@@ -4,35 +4,31 @@ using UnityEngine;
 
 public class FightResult : MonoBehaviour {
 
+    // Player objects, applied in editor, representing players 1 and 2
     [SerializeField]
     private AttackInput player1;
     [SerializeField]
     private AttackInput player2;
 
-    int timer;
+    [SerializeField]
+    private GameObject objTimer;
+    private Timer timer;
 
     public Transform space { get; protected set; }
 
 	// Use this for initialization
 	void Start ()
     {
+        timer = objTimer.GetComponent<Timer>();
+
         player1.transform.position = new Vector3(-2, 0, 0);
         player2.transform.position = new Vector3(2, 0, 0);
-
-        timer = 300;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        timer--;
-
-        if (timer <= 0)
-        {
-            TranslateSpace();
-
-            timer = 300;
-        }
+        TranslateSpace();
 	}
 
     private int DetermineRound()
@@ -69,7 +65,10 @@ public class FightResult : MonoBehaviour {
 
     private void TranslateSpace()
     {
-        player1.transform.Translate(DetermineRound(), 0, 0);
-        player2.transform.Translate(DetermineRound(), 0, 0);
+        if (timer.TimeUp)
+        {
+            player1.transform.Translate(DetermineRound(), 0, 0);
+            player2.transform.Translate(DetermineRound(), 0, 0);
+        }
     }
 }

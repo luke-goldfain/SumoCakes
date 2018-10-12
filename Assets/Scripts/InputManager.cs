@@ -16,6 +16,8 @@ public class InputManager : MonoBehaviour {
 
     }
 
+    // Pretty self-explanatory class, gathers input from two controllers.
+
     public bool Joy1A()
     {
         return Input.GetButtonDown("joy1A");
