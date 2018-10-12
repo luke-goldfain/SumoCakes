@@ -7,7 +7,11 @@ public class AttackInput : MonoBehaviour {
     private InputManager inputManager;
 
     [SerializeField]
-    private int playerNumber;
+    public int playerNumber;
+
+    public bool Punched { get; protected set; }
+    public bool Headbutted { get; protected set; }
+    public bool Kicked { get; protected set; }
 
 	// Use this for initialization
 	void Start ()
@@ -57,17 +61,23 @@ public class AttackInput : MonoBehaviour {
 
     private void AttackA()
     {
-        Debug.Log("Pancake " + playerNumber + " uses A attack");
+        Punched = true;
+        Headbutted = false;
+        Kicked = false;
     }
 
     private void AttackX()
     {
-        Debug.Log("Pancake " + playerNumber + " uses X attack");
+        Punched = false;
+        Headbutted = true;
+        Kicked = false;
     }
 
     private void AttackY()
     {
-        Debug.Log("Pancake " + playerNumber + " uses Y attack");
+        Punched = false;
+        Headbutted = false;
+        Kicked = true;
     }
 
 
