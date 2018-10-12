@@ -10,6 +10,8 @@ public class FightResult : MonoBehaviour {
     [SerializeField]
     private AttackInput player2;
 
+    // Timer object, applied in editor, representing the Round Timer.
+    // MAKE SURE THIS IS THE SAME TIMER OBJECT AS THE PLAYER ONES!
     [SerializeField]
     private GameObject objTimer;
     private Timer timer;
@@ -26,13 +28,17 @@ public class FightResult : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
     {
+        // TranslateSpace only actually does anything when this object's timer's TimeUp is true
         TranslateSpace();
 	}
 
     private int DetermineRound()
     {
+        // Both players are translated by the amount of units here. 
+        // Numbers subject to change!
+
         // Player 1 victories
         if (player1.Punched && player2.Headbutted)
         {
@@ -60,12 +66,15 @@ public class FightResult : MonoBehaviour {
         {
             return -3;
         }
+        // Default case (ties and one-player-does-nothing rounds)
         else return 0;
     }
 
     private void TranslateSpace()
     {
-        if (timer.TimeUp)
+        // If this game object's timer hits 0, player objects are transformed
+        // based on the round's results.
+        if (timer.isTimeRunOut)
         {
             player1.transform.Translate(DetermineRound(), 0, 0);
             player2.transform.Translate(DetermineRound(), 0, 0);

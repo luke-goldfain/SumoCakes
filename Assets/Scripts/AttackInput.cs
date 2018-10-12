@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class AttackInput : MonoBehaviour {
 
+    // Input manager, applied in editor, that grabs controller inputs.
     [SerializeField]
     private GameObject objInputManager;
     private InputManager inputManager;
 
+    // Simple state machine enum
     private enum state
     {
         acting,
@@ -15,13 +17,17 @@ public class AttackInput : MonoBehaviour {
     }
     private state playerState;
 
+    // Timer object, applied in editor, used to determine when rounds end and start.
+    // MAKE SURE THIS IS THE SAME GAMEOBJECT THAT ROUNDMANAGER USES!
     [SerializeField]
     private GameObject objTimer;
     private Timer timer;
 
+    // Int applied in editor denoting the player's number. 1 for player 1, 2 for player 2.
     [SerializeField]
     public int playerNumber;
 
+    // Booleans denoting whether the player attacked, and what attack they used. Referenced by RoundManager (FightResult.cs).
     public bool Attacked { get; protected set; }
     public bool Punched { get; protected set; }
     public bool Headbutted { get; protected set; }
@@ -93,20 +99,16 @@ public class AttackInput : MonoBehaviour {
                 break;
         }
 
-        // If timer is 0, switch states and set timer again.
-        if (timer.TimeUp)
+        // If timer is 0, switch states and set timer to maxTime again.
+        if (timer.isTimeRunOut)
         {
             switch (playerState)
             {
                 case state.acting:
                     playerState = state.waiting;
-                    Debug.Log("state is now waiting for 60 frames");
-                    timer.maxTime = 300;
                     break;
                 case state.waiting:
                     playerState = state.acting;
-                    Debug.Log("state is now acting for 300 frames");
-                    timer.maxTime = 60;
                     break;
             }
         }
