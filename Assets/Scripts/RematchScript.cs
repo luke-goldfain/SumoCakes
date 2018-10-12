@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartScript : MonoBehaviour {
-
-    //Function that changes scene to controls scene. Change "" based on scene name.
+public class RematchScript : MonoBehaviour
+{
+    //Function that changes scene to game scene. Change "" based on scene name.
     public void ChangeMenuScene(string sceneName)
     {
-        //Loads controls scene.
+        //Loads game scene.
         SceneManager.LoadScene("ControlScene", LoadSceneMode.Single);
     }
 }
