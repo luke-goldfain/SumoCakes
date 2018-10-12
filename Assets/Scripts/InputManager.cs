@@ -81,6 +81,16 @@ public class InputManager : MonoBehaviour {
         return Input.GetButtonDown("joy2A");
     }
 
+    public bool Joy2X()
+    {
+        return Input.GetButtonDown("joy2X");
+    }
+
+    public bool Joy2Y()
+    {
+        return Input.GetButtonDown("joy2Y");
+    }
+
     public bool Joy2Start()
     {
         return Input.GetButtonDown("joy2start");
