@@ -59,3 +59,4 @@ public class AudioManager : MonoBehaviour {
  * Add this code to wherever you want to play a certain sound:  FindObjectOfType<AudioManager>().Play("PlayerDeath");
  * Use that line of code anywhere, whenever you want to play any sound. Simple change the string name. 
  * This line of code is NOT to be put in AudioManager.cs or in Sound.cs. Place it in the particular class of the source code. 
+ */
