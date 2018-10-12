@@ -6,9 +6,19 @@ public class AttackInput : MonoBehaviour {
     
     private InputManager inputManager;
 
+    private enum state
+    {
+        acting,
+        waiting,
+    }
+    private state playerState;
+
+    private int timer;
+
     [SerializeField]
     public int playerNumber;
 
+    public bool Attacked { get; protected set; }
     public bool Punched { get; protected set; }
     public bool Headbutted { get; protected set; }
     public bool Kicked { get; protected set; }
@@ -17,50 +27,89 @@ public class AttackInput : MonoBehaviour {
 	void Start ()
     {
         inputManager = new InputManager();
+
+        timer = 300;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (playerNumber == 1)
+        switch (playerState)
         {
-            if (inputManager.Joy1A())
-            {
-                AttackA();
-            }
+            case state.acting:
+                if (!Attacked)
+                {
+                    if (playerNumber == 1)
+                    {
+                        if (inputManager.Joy1A())
+                        {
+                            AttackA();
+                        }
 
-            if (inputManager.Joy1X())
-            {
-                AttackX();
-            }
+                        if (inputManager.Joy1X())
+                        {
+                            AttackX();
+                        }
 
-            if (inputManager.Joy1Y())
-            {
-                AttackY();
-            }
+                        if (inputManager.Joy1Y())
+                        {
+                            AttackY();
+                        }
+                    }
+
+                    if (playerNumber == 2)
+                    {
+                        if (inputManager.Joy2A())
+                        {
+                            AttackA();
+                        }
+
+                        if (inputManager.Joy2X())
+                        {
+                            AttackX();
+                        }
+
+                        if (inputManager.Joy2Y())
+                        {
+                            AttackY();
+                        }
+                    }
+                }
+
+                timer--;
+                break;
+
+            case state.waiting:
+                Attacked = false;
+                Punched = false;
+                Headbutted = false;
+                Kicked = false;
+                timer--;
+                break;
         }
 
-        if (playerNumber == 2)
+        if (timer <= 0)
         {
-            if (inputManager.Joy2A())
-            {
-                AttackA();
-            }
+            Debug.Log("timer hit 0");
 
-            if (inputManager.Joy2X())
+            switch (playerState)
             {
-                AttackX();
-            }
-
-            if (inputManager.Joy2Y())
-            {
-                AttackY();
+                case state.acting:
+                    playerState = state.waiting;
+                    timer = 60;
+                    break;
+                case state.waiting:
+                    playerState = state.acting;
+                    timer = 300;
+                    break;
             }
         }
 	}
 
     private void AttackA()
     {
+        Attacked = true;
+
         Punched = true;
         Headbutted = false;
         Kicked = false;
@@ -68,6 +117,8 @@ public class AttackInput : MonoBehaviour {
 
     private void AttackX()
     {
+        Attacked = true;
+
         Punched = false;
         Headbutted = true;
         Kicked = false;
@@ -75,6 +126,8 @@ public class AttackInput : MonoBehaviour {
 
     private void AttackY()
     {
+        Attacked = true;
+
         Punched = false;
         Headbutted = false;
         Kicked = true;

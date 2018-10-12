@@ -9,20 +9,30 @@ public class FightResult : MonoBehaviour {
     [SerializeField]
     private AttackInput player2;
 
+    int timer;
+
     public Transform space { get; protected set; }
 
 	// Use this for initialization
 	void Start ()
     {
-        space.position = new Vector3(0, 0, 0);
+        player1.transform.position = new Vector3(-2, 0, 0);
+        player2.transform.position = new Vector3(2, 0, 0);
+
+        timer = 300;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        // When timer hits 0
+        timer--;
 
-        TranslateSpace();
+        if (timer <= 0)
+        {
+            TranslateSpace();
+
+            timer = 300;
+        }
 	}
 
     private int DetermineRound()
