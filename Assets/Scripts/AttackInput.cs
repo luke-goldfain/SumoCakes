@@ -9,6 +9,8 @@ public class AttackInput : MonoBehaviour {
     private GameObject objInputManager;
     private InputManager inputManager;
 
+    Animator animater;
+
     // Simple state machine enum
     private enum state
     {
@@ -37,6 +39,8 @@ public class AttackInput : MonoBehaviour {
 	void Start ()
     {
         inputManager = objInputManager.GetComponent<InputManager>();
+
+        animater = GetComponent<Animator>();
 
         timer = objTimer.GetComponent<Timer>();
 	}
@@ -96,6 +100,9 @@ public class AttackInput : MonoBehaviour {
                 Punched = false;
                 Headbutted = false;
                 Kicked = false;
+                animater.SetBool("ifPunch", false);
+                animater.SetBool("ifKick", false);
+                animater.SetBool("ifHeadButt", false);
                 break;
         }
 
@@ -106,6 +113,9 @@ public class AttackInput : MonoBehaviour {
             {
                 case state.acting:
                     playerState = state.waiting;
+                    if (Punched) animater.SetBool("ifPunch", true);
+                    if (Kicked) animater.SetBool("ifKick", true);
+                    if (Headbutted) animater.SetBool("ifHeadButt", true);
                     break;
                 case state.waiting:
                     playerState = state.acting;
@@ -127,20 +137,20 @@ public class AttackInput : MonoBehaviour {
 
     private void AttackX()
     {
-        Debug.Log("Player " + playerNumber + " headbutted (X)");
+        Debug.Log("Player " + playerNumber + " kicked (X)");
 
         Attacked = true;
         
-        Headbutted = true;
+        Kicked = true;
     }
 
     private void AttackY()
     {
-        Debug.Log("Player " + playerNumber + " kicked (Y)");
+        Debug.Log("Player " + playerNumber + " headbutted (Y)");
 
         Attacked = true;
 
-        Kicked = true;
+        Headbutted = true;
     }
 
 
