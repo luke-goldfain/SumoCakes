@@ -39,10 +39,10 @@ public class FightResult : MonoBehaviour {
         // Both players are translated by the amount of units here. 
         // Numbers subject to change!
 
-        // Player 1 victories
+        // Player 2 victories
         if (player1.Punched && player2.Headbutted)
         {
-            return 1;
+            return 3;
         }
         else if (player1.Headbutted && player2.Kicked)
         {
@@ -50,13 +50,13 @@ public class FightResult : MonoBehaviour {
         }
         else if (player1.Kicked && player2.Punched)
         {
-            return 3;
+            return 1;
         }
 
-        // Player 2 victories
+        // Player 1 victories
         else if (player2.Punched && player1.Headbutted)
         {
-            return -1;
+            return -3;
         }
         else if (player2.Headbutted && player1.Kicked)
         {
@@ -64,7 +64,7 @@ public class FightResult : MonoBehaviour {
         }
         else if (player2.Kicked && player1.Punched)
         {
-            return -3;
+            return -1;
         }
         // Default case (ties and one-player-does-nothing rounds)
         else return 0;

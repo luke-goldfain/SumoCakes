@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CanvasController : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class CanvasController : MonoBehaviour
     private GameObject canvas;
 
     bool GameEnded;
+    bool player1won;
 
     // Use this for initialization
     void Start()
@@ -52,6 +54,28 @@ public class CanvasController : MonoBehaviour
         player2.GetComponent<AttackInput>().enabled = !GameEnded;
         roundManager.GetComponent<FightResult>().enabled = !GameEnded;
 
-        // TODO: Set an image on canvas to reflect winner
+        if (player1.transform.position.x < 0)
+        {
+            player1won = false;
+        }
+        else player1won = true;
+
+        DisplayFightResult(player1won);
+    }
+
+    public Image Result;
+    public Sprite winner1;
+    public Sprite winner2;
+    private void DisplayFightResult(bool p1won)
+    {
+        if (p1won)
+        {
+            Result.sprite = winner2;
+        }
+        else
+        {
+            Result.sprite = winner1;
+
+        }
     }
 }

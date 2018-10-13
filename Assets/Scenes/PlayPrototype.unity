@@ -212,11 +212,6 @@ Prefab:
       propertyPath: m_Name
       value: Player2
       objectReference: {fileID: 0}
-    - target: {fileID: 212944490609887176, guid: ab69196657169fe4ab103f5f4cdc82a2,
-        type: 2}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab69196657169fe4ab103f5f4cdc82a2, type: 2}
   m_IsPrefabParent: 0
@@ -489,7 +484,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 405165680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.5, y: 0, z: 0}
+  m_LocalPosition: {x: -3.5, y: -1.5, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1122191327}
@@ -547,11 +542,6 @@ Prefab:
       propertyPath: player2
       value: 
       objectReference: {fileID: 227184976}
-    - target: {fileID: 114020902052583624, guid: bb0117523db1631429187fca840f1112,
-        type: 2}
-      propertyPath: maxTime
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb0117523db1631429187fca840f1112, type: 2}
   m_IsPrefabParent: 0
