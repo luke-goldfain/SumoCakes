@@ -16,6 +16,9 @@ public class FightResult : MonoBehaviour {
     private GameObject objTimer;
     private Timer timer;
 
+    [SerializeField]
+    private GameObject timerSprite;
+
     public Transform space { get; protected set; }
 
 	// Use this for initialization
@@ -76,6 +79,12 @@ public class FightResult : MonoBehaviour {
         // based on the round's results.
         if (timer.isTimeRunOut)
         {
+            if (timerSprite.activeSelf == true)
+            {
+                timerSprite.SetActive(false);
+            }
+            else timerSprite.SetActive(true);
+
             player1.transform.Translate(DetermineRound(), 0, 0);
             player2.transform.Translate(DetermineRound(), 0, 0);
         }

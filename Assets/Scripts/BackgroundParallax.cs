@@ -42,7 +42,7 @@ public class BackgroundParallax : MonoBehaviour
         if (hasParallax)
         {
             float deltaX = cameraTransform.position.x - lastCameraX;
-            transform.position += Vector3.right * (deltaX * parallaxSpeed);
+            transform.position += Vector3.left * (deltaX * parallaxSpeed);
         }
         lastCameraX = cameraTransform.position.x;
         //when scrolling is checked
@@ -55,7 +55,7 @@ public class BackgroundParallax : MonoBehaviour
         }
     }
     //update while moving left
-        private void ScrollLeft()
+    private void ScrollLeft()
     {
         int lastRight = rightIndex;
         layers[rightIndex].position = Vector3.right * (layers[leftIndex].position.x - backgroundSize);

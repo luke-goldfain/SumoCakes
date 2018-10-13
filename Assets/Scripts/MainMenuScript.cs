@@ -9,10 +9,6 @@ public class MainMenuScript : MonoBehaviour
     public void ChangeMenuScene(string sceneName)
     {
         //Loads main menu scene.
-<<<<<<< HEAD
-        SceneManager.LoadScene("TitleScene", LoadSceneMode.Single);
-=======
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
->>>>>>> MainMenu2
     }
 }

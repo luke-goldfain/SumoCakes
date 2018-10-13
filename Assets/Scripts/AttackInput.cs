@@ -116,6 +116,7 @@ public class AttackInput : MonoBehaviour {
                     if (Punched) animater.SetBool("ifPunch", true);
                     if (Kicked) animater.SetBool("ifKick", true);
                     if (Headbutted) animater.SetBool("ifHeadButt", true);
+                    animater.SetInteger("animLocation", (int)this.transform.position.x);
                     break;
                 case state.waiting:
                     playerState = state.acting;
