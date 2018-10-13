@@ -68,7 +68,7 @@ public class CanvasController : MonoBehaviour
         player2.GetComponent<AttackInput>().enabled = !GameEnded;
         roundManager.GetComponent<FightResult>().enabled = !GameEnded;
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
         if (player1.transform.position.x < 0)
         {
             player1won = false;
@@ -92,11 +92,11 @@ public class CanvasController : MonoBehaviour
             Result.sprite = winner1;
 
         }
-=======
+//=======
        
 
 
         // TODO: Set an image on canvas to reflect winner
->>>>>>> origin/SoundTestingWithController
+//>>>>>>> origin/SoundTestingWithController
     }
 }
