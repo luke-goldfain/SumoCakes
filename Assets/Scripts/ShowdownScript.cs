@@ -8,6 +8,6 @@ public class ShowdownScript : MonoBehaviour {
     public void ChangeMenuScene(string sceneName)
     {
         //Loads game scene.
-        SceneManager.LoadScene("ShowdownScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("PlayPrototype", LoadSceneMode.Single);
     }
 }

@@ -702,6 +702,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 487be771da6515348ae094eeab8d21f3, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1099213474 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1302121563582452, guid: ab69196657169fe4ab103f5f4cdc82a2,
+    type: 2}
+  m_PrefabInternal: {fileID: 185608941}
 --- !u!1 &1113295092
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,7 +853,19 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114285485939965564, guid: c747e5c1ab3022848a380770e6659846,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114300960948856802, guid: c747e5c1ab3022848a380770e6659846,
+        type: 2}
+      propertyPath: maxTime
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114300960948856802, guid: c747e5c1ab3022848a380770e6659846, type: 2}
+    - {fileID: 114968365187609152, guid: c747e5c1ab3022848a380770e6659846, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c747e5c1ab3022848a380770e6659846, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1587345680
@@ -1055,6 +1072,7 @@ GameObject:
   - component: {fileID: 2060365215}
   - component: {fileID: 2060365214}
   - component: {fileID: 2060365213}
+  - component: {fileID: 2060365216}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1107,3 +1125,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2060365216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2060365212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 772ecdef69392e647908e78ce4bd17a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1: {fileID: 1900348263}
+  player2: {fileID: 1099213474}
+  roundManager: {fileID: 2073194254}
+  pointsToWin: 7
+  canvas: {fileID: 1587345680}
+--- !u!1 &2073194254 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1109031392628268, guid: bb0117523db1631429187fca840f1112,
+    type: 2}
+  m_PrefabInternal: {fileID: 616132492}
