@@ -459,6 +459,13 @@ MonoBehaviour:
     loop: 1
     mute: 0
     source: {fileID: 0}
+  - name: Win
+    clip: {fileID: 8300000, guid: 3f4fba9e093e166498ea40e534c5b6e0, type: 3}
+    volume: 1.45
+    pitch: 1.057
+    loop: 1
+    mute: 0
+    source: {fileID: 0}
 --- !u!4 &724779714
 Transform:
   m_ObjectHideFlags: 0
@@ -1280,6 +1287,7 @@ GameObject:
   - component: {fileID: 2024017773}
   - component: {fileID: 2024017772}
   - component: {fileID: 2024017775}
+  - component: {fileID: 2024017771}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1287,6 +1295,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!81 &2024017771
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2024017770}
+  m_Enabled: 1
 --- !u!124 &2024017772
 Behaviour:
   m_ObjectHideFlags: 0

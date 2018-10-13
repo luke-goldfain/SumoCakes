@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class CanvasController : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject AudioSwitcher;
 
-    private AudioManager audioManager;
+    [SerializeField]
+    private AudioClip winclip; //win sound effect variable
 
     [SerializeField]
     private GameObject player1;
@@ -38,24 +41,24 @@ public class CanvasController : MonoBehaviour
 
         GameEnded = false;
 
-        audioManager = AudioManager.instance;
-        
-        if (audioManager == null)
-        {
-            Debug.LogError("No audio manager found in this scene");
-        }
-
         canvas.SetActive(false);
     }
+
+    bool winPlayed = false;
 
     // Update is called once per frame
     void Update()
     {
-        audioManager.PlaySound("Win");
 
         if (player1.transform.position.x <= -pointsToWin - 2 || player1.transform.position.x >= pointsToWin - 2)
         {
             GameEnded = true;
+        }
+
+        if (GameEnded == true && winPlayed == false)
+        {
+            winPlayed = true;
+            AudioSwitcher.GetComponent<AudioSwitcher>().changeBGM(winclip); //plays the win clip
         }
 
 

@@ -2,10 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WinSong : MonoBehaviour {
+public class SwitchTrigger : MonoBehaviour {
+
+    AudioManager theAM;
+    AudioClip newTrack;
+    public void Switchsounds()
+    {
+
+    }
+
 
 	// Use this for initialization
 	void Start () {
+
+        theAM = FindObjectOfType<AudioManager>();
+
 		
 	}
 	
@@ -13,4 +24,5 @@ public class WinSong : MonoBehaviour {
 	void Update () {
 		
 	}
+
 }
