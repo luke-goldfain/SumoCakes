@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class CanvasController : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject AudioSwitcher;
+
+    [SerializeField]
+    private AudioClip winclip; //win sound effect variable
 
     private AudioManager audioManager;
 
@@ -50,16 +55,30 @@ public class CanvasController : MonoBehaviour
         canvas.SetActive(false);
     }
 
+    bool winPlayed = false;
+
     // Update is called once per frame
     void Update()
     {
+<<<<<<< HEAD
         audioManager.PlaySound("Win");
+=======
+>>>>>>> origin/SoundTestingWithController
 
         if (player1.transform.position.x <= -pointsToWin - 2 || player1.transform.position.x >= pointsToWin - 2)
         {
             GameEnded = true;
         }
 
+<<<<<<< HEAD
+=======
+        if (GameEnded == true && winPlayed == false)
+        {
+            winPlayed = true;
+            AudioSwitcher.GetComponent<AudioSwitcher>().changeBGM(winclip); //plays the win clip
+        }
+
+>>>>>>> origin/SoundTestingWithController
 
         canvas.SetActive(GameEnded);
 
@@ -68,6 +87,7 @@ public class CanvasController : MonoBehaviour
         player2.GetComponent<AttackInput>().enabled = !GameEnded;
         roundManager.GetComponent<FightResult>().enabled = !GameEnded;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         if (player1.transform.position.x < 0)
         {
@@ -93,6 +113,8 @@ public class CanvasController : MonoBehaviour
 
         }
 =======
+=======
+>>>>>>> origin/SoundTestingWithController
        
 
 
