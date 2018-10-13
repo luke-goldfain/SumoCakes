@@ -1,16 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Audio;
 using System;
 
-public class AudioManager : MonoBehaviour {
+public class AudioManager : MonoBehaviour
+{
 
     public Sound[] sounds; //used to make an array of sounds and change their factors accordingly in the Awake method
 
     public static AudioManager instance; //to detect the instance of AudioManager in Unity
 
-	void Awake () {
+    void Start() //use this method for default sounds that will play
+    {
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            GameObject _go = new GameObject("Sound_ " + i + "_" + sounds[i].name);
+            sounds[i].SetSource (_go.AddComponent<AudioSource>());
+        }
+
+        PlaySound("Theme");
+    }
+
+    void Awake()
+    {
+
+        if (instance != null)
+        {
+            Debug.LogError("More than one AudioManager in the scene.");
+        } else
+        {
+            instance = this;
+        }
 
         if (instance == null) //To remove duplicate instances of AudioManager, even though it's static. 
             instance = this;
@@ -32,26 +51,23 @@ public class AudioManager : MonoBehaviour {
             s.source.volume = s.volume; //volume changer
             s.source.pitch = s.pitch; //pitch mixer
             s.source.loop = s.loop; //loop's the sound clip
+            s.source.mute = s.mute;
         }
-	}
-
-    void Start() //use this method for default sounds that will play
-    {
-        Play("Theme"); //Theme being the main background music
     }
 
-
-    public void Play (string name) //name is the name of the sound. Change parameter name for every additional sound
+    public void PlaySound(string _name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-
-        if (s == null) //in case the spelling of the sound name is wrong, then it will display an error message
+        for (int i = 0; i < sounds.Length; i++)
         {
-            Debug.LogWarning("Sound " + name + " not found");
-            return;
+            if (sounds[i].name == _name)
+            {
+                sounds[i].Play();
+                return;
+            }
         }
-       
-        s.source.Play();
+
+        // no sound with _name
+        Debug.LogWarning("AudioManager: Sound not found in list: " + _name);
     }
 }
 
@@ -59,4 +75,5 @@ public class AudioManager : MonoBehaviour {
  * Add this code to wherever you want to play a certain sound:  FindObjectOfType<AudioManager>().Play("PlayerDeath");
  * Use that line of code anywhere, whenever you want to play any sound. Simple change the string name. 
  * This line of code is NOT to be put in AudioManager.cs or in Sound.cs. Place it in the particular class of the source code. 
+ *
  */

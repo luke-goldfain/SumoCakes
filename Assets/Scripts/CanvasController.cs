@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class CanvasController : MonoBehaviour
 {
 
+    private AudioManager audioManager;
+
     [SerializeField]
     private GameObject player1;
     [SerializeField]
@@ -38,22 +40,35 @@ public class CanvasController : MonoBehaviour
 
         GameEnded = false;
 
+        audioManager = AudioManager.instance;
+        
+        if (audioManager == null)
+        {
+            Debug.LogError("No audio manager found in this scene");
+        }
+
         canvas.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        audioManager.PlaySound("Win");
+
         if (player1.transform.position.x <= -pointsToWin - 2 || player1.transform.position.x >= pointsToWin - 2)
         {
             GameEnded = true;
         }
 
+
         canvas.SetActive(GameEnded);
+
+
         player1.GetComponent<AttackInput>().enabled = !GameEnded;
         player2.GetComponent<AttackInput>().enabled = !GameEnded;
         roundManager.GetComponent<FightResult>().enabled = !GameEnded;
 
+<<<<<<< HEAD
         if (player1.transform.position.x < 0)
         {
             player1won = false;
@@ -77,5 +92,11 @@ public class CanvasController : MonoBehaviour
             Result.sprite = winner1;
 
         }
+=======
+       
+
+
+        // TODO: Set an image on canvas to reflect winner
+>>>>>>> origin/SoundTestingWithController
     }
 }
