@@ -119,7 +119,7 @@ public class AttackInput : MonoBehaviour {
     private void AttackA()
     {
         Debug.Log("Player " + playerNumber + " punched (A)");
-
+        SoundManagerScript.PlaySound("usePunch");
         Attacked = true;
 
         Punched = true;
@@ -128,7 +128,7 @@ public class AttackInput : MonoBehaviour {
     private void AttackX()
     {
         Debug.Log("Player " + playerNumber + " headbutted (X)");
-
+        SoundManagerScript.PlaySound("useHeadbutt");
         Attacked = true;
         
         Headbutted = true;
@@ -137,7 +137,7 @@ public class AttackInput : MonoBehaviour {
     private void AttackY()
     {
         Debug.Log("Player " + playerNumber + " kicked (Y)");
-
+        SoundManagerScript.PlaySound("useKick");
         Attacked = true;
 
         Kicked = true;
